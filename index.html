@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sky is...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+        .feedback {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        .question {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .input-container {
+            display: inline-block;
+            position: relative;
+        }
+        input[type="text"] {
+            font-size: 1em;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            font-size: 1em;
+            padding: 5px 10px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .yt-link {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #007BFF;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p id="feedback" class="feedback hidden"></p>
+        <p class="question">The sky is <span class="input-container">[<input type="text" id="answer" />]</span>.</p>
+        <button onclick="checkAnswer()">Submit</button>
+        <a id="yt-link" class="yt-link hidden" href="https://www.youtube.com" target="_blank">Watch this video</a>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value.toLowerCase();
+            const feedback = document.getElementById('feedback');
+            const ytLink = document.getElementById('yt-link');
+            
+            if (answer === 'voidless') {
+                feedback.textContent = 'Correct!';
+                feedback.classList.add('correct');
+                feedback.classList.remove('incorrect');
+                feedback.classList.remove('hidden');
+                ytLink.classList.remove('hidden');
+            } else {
+                feedback.textContent = 'Incorrect!';
+                feedback.classList.add('incorrect');
+                feedback.classList.remove('correct');
+                feedback.classList.remove('hidden');
+                ytLink.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
